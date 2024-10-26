@@ -83,6 +83,36 @@ public class PizzariaDao {
 
     }
 
+    public void deletePedidoById(String pizzaId) {
+
+        String SQL = "DELETE PEDIDO WHERE ID = ?";
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, pizzaId);
+            preparedStatement.execute();
+
+            System.out.println("success on delete car with id: " + pizzaId);
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection");
+
+        }
+
+    }
+
+
+
+
+
 }
 
 
