@@ -15,9 +15,9 @@ import java.util.List;
 public class CreatePizzariaServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        String pizzaPedido = request.getParameter("pizza-pedido");
+        String pizzaPedido = request.getParameter("pedido");
 
         Pizzaria pizza= new Pizzaria(pizzaPedido);
 

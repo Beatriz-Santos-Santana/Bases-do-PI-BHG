@@ -55,11 +55,11 @@ public class PizzariaDao {
 
             while (resultSet.next()) {
 
-                String pizzariaId = resultSet.getString("id");
+                String pizzaPedido = resultSet.getString("PEDIDO");
 
-                String pizzariaPedido = resultSet.getString("pedido");
+                String pizzaID = resultSet.getString("ID");
 
-                Pizzaria pizzaria = new Pizzaria(pizzariaId,pizzariaPedido);
+                Pizzaria pizzaria = new Pizzaria(pizzaPedido, pizzaID);
 
                 pizzas.add(pizzaria);
 

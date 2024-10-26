@@ -7,16 +7,16 @@
 </head>
 <body>
 <div>
-    <h1>Pedido</h1>
+    <h1>Pedidos</h1>
     <table>
         <tr>
             <th>ID</th>
             <th>Pedido</th>
         </tr>
-        <c:forEach var="pizza" items="${pizzas}">
+        <c:forEach var="pizza" items="${pedido}">
             <tr>
-                <td></td>
-                <td>${pizza.pedido}</td>
+                <td>${pizza.id}</td>
+                <td>${pizza.pedido} </td>
             </tr>
         </c:forEach>
     </table>
