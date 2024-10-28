@@ -1,5 +1,6 @@
 package br.com.pizzaria.dao;
 
+import br.com.pizzaria.config.ConnectionPoolConfig;
 import br.com.pizzaria.model.Pizzaria;
 
 import java.sql.Connection;
@@ -43,9 +44,7 @@ public class PizzariaDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
 
@@ -89,15 +88,13 @@ public class PizzariaDao {
 
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-
-            System.out.println("success in database connection");
+            Connection connection = ConnectionPoolConfig.getConnection();
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setString(1, pizzaId);
             preparedStatement.execute();
 
-            System.out.println("success on delete car with id: " + pizzaId);
+            System.out.println("success on delete pedido with id: " + pizzaId);
 
             connection.close();
 
@@ -106,6 +103,36 @@ public class PizzariaDao {
             System.out.println("fail in database connection");
 
         }
+
+    }
+
+    public void updatePedido(Pizzaria pizzaria){
+
+        String SQL = "UPDATE PEDIDO SET PEDIDO = ? WHERE ID = ?";
+
+        try {
+
+            Connection connection = ConnectionPoolConfig.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setString(1, pizzaria.getPedido());
+            preparedStatement.setString(2, pizzaria.getId());
+            preparedStatement.execute();
+
+            System.out.println("success in update pedido");
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection");
+            System.out.println("Error: " + e.getMessage());
+
+        }
+
+
+
 
     }
 

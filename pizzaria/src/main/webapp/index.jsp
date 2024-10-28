@@ -8,9 +8,10 @@
 <form action="/create-pedido" method="post">
 
     <label>Pedido</label>
-    <input type="text" name="pedido" id="pedido" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" >
+    <input type="text" name="pedido" id="pedido" value="${param.pedido}">
+    <input type="hidden" id="id" name="id" value="${param.id}">
 
-    <button type="submit" class="btn btn-success">Procurar</button>
+    <button type="submit" class="btn btn-success">Salvar</button>
 
 
 

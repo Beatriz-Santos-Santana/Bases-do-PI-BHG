@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/delete-pedido")
-public class DeleteCarServlet extends HttpServlet{
+public class DeletePedidoServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -18,7 +18,7 @@ public class DeleteCarServlet extends HttpServlet{
 
         new PizzariaDao().deletePedidoById(pedidoID);
 
-        resp.sendRedirect("/find-all-cars");
+        resp.sendRedirect("/find-all-pizzas");
 
     }
 

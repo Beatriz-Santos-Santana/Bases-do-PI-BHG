@@ -18,13 +18,21 @@ public class CreatePizzariaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String pizzaPedido = request.getParameter("pedido");
+        String pizzaId = request.getParameter("id");
 
-        Pizzaria pizza= new Pizzaria(pizzaPedido);
+        PizzariaDao pizzariaDao = new PizzariaDao();
+        Pizzaria pizzaria = new Pizzaria(pizzaPedido,pizzaId);
 
-        new PizzariaDao().createPedido(pizza);
+        if (pizzaId.isBlank()) {
+
+            pizzariaDao.createPedido(pizzaria);
+
+        } else {
+            pizzariaDao.updatePedido(pizzaria);
+        }
 
         response.sendRedirect("/find-all-pizzas");
 
-    }
 
+    }
 }

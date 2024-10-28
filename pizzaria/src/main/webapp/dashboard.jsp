@@ -8,22 +8,33 @@
 </head>
 <body>
 <div>
+    <c:if test="${sessionScope.loggedUser != null}">
+        <span>${sessionScope.loggedUser}</span>
+        <a href="/logout">Logout</a>
+    </c:if>
+
     <h1>Pedidos</h1>
     <table>
         <tr>
             <th>ID</th>
             <th>Pedido</th>
+            <c:if test="${sessionScope.loggedUser != null}">
             <th>Actions</th>
+            </c:if>
         </tr>
         <c:forEach var="pizza" items="${pedido}">
             <tr>
                 <td>${pizza.id}</td>
                 <td>${pizza.pedido} </td>
                 <td>
-                                <form action="/delete-car" method="post">
-                                    <input type="hidden" id="id" name="id" value="${car.id}">
+                    <c:if test="${sessionScope.loggedUser != null}">
+                                <form action="/delete-pedido" method="post">
+                                    <input type="hidden" id="id" name="id" value="${pizza.id}">
                                     <button type="submit">Delete</button>
+                                    <span> | </span>
+                                    <a href="index.jsp?id=${pizza.id}&pedido=${pizza.pedido}">Update</a>
                                 </form>
+                    </c:if>
                             </td>
             </tr>
         </c:forEach>
